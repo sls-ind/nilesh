@@ -11799,7 +11799,13 @@ p.lead {
 .dev-icons {
   font-size: 2rem;
 }
-
+button.nav-link {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  width: max-content;
+  font-weight: 800;
+}
 section.resume-section {
   display: flex;
   align-items: center;
