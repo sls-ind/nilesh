@@ -23,6 +23,38 @@
         function downloadCV() {
 
         }
+
+        function incrementAndShowValue() {
+            var value = getCookie("visitcounter") || 0;
+            var newValue = ("00000" + (Number(value) + 1)).slice(-6);
+            var container = document.getElementById("counterVisitor");
+            // String(newValue).split("").forEach(function (item, index) {
+                container.innerHTML = newValue;
+            // });
+
+            value++;
+            setCookie("visitcounter", value);
+        }
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + expires + "; path=https://sls-ind.github.io/nilesh/";
+        }
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
     </script>
 </head>
 
@@ -43,12 +75,13 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#roles">Functions</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
-                <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="assets/resume/nilesh_nov_21.pdf"
-                        download="nilesh_sinha_8596019007" target="_blank"></a>Download Resume</a></li> -->
-                <button class="nav-link" type="submit" onclick="window.open('assets/resume/nilesh_nov_21.pdf')">Download
-                    Resume <i class="fas fa-download"></i></button>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Recognitions</a></li>
+                <li class="nav-item" onclick="window.open('assets/resume/nilesh_nov_21.pdf')">
+                    <a class="nav-link js-scroll-trigger" href="#awards">Resume <i class="fas fa-download"></i>
+                    </a>
+                </li>
 
             </ul>
         </div>
@@ -63,13 +96,13 @@
                     <span class="text-primary">Kumar Sinha</span>
                 </h1>
                 <div class="subheading mb-5">
-                    VIM 349 · Sailashree Vihar, Bhubaneswar 751021 · 8596019007 ·
+                    Hyderabad, India ·
                     <a href="mailto:nileshsinha037@gmail.com">nileshsinha037@gmail.com</a>
                 </div>
                 <p class="lead">I am experienced in leveraging agile frameworks to build and deliver fast, robust
                     and scalable enterprise applications.</p>
                 <p class="lead mb-5">
-                    My products have helped enhance supply chain experience for one of the largest
+                    Our products have helped enhance supply chain experience for one of the largest
                     consumer electronics manufacturer in the world.
                 </p>
                 <div class="social-icons">
@@ -78,6 +111,7 @@
                     <!-- <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
                     <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
                     <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a> -->
+                    <div id="counterVisitor"></div>
                 </div>
             </div>
         </section>
@@ -88,17 +122,27 @@
                 <h2 class="mb-5">Experience</h2>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
                     <div class="flex-grow-1">
+                        <h3 class="mb-0">Software Dev. Engineer</h3>
+                        <div class="subheading mb-1">Apple</div>
+                        <p>On a usual day I collaborate with 10s of people from business owners to managers,
+                            developers & QA, getting together to deliver solutions which
+                            exceed customer expectations. </p>
+                        <p>My key responsibilities include coming up with innovative and new age solution to business
+                            problem in collaboration with highly skilled & dedicated team of developers, driving
+                            development & product delivery.</p>
+                    </div>
+                    <div class="flex-shrink-0"><span class="text-primary">June 2022 - Present</span></div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
+                    <div class="flex-grow-1">
                         <h3 class="mb-0">Specialist Programmer</h3>
                         <div class="subheading mb-1">Infosys Limited</div>
-                        <p>Bring to the table win-win survival strategies to ensure proactive domination. Ensuring
-                            effecient team collaboration with best practices in place, delivering new age solution to
-                            customer problems.</p>
-                        <p>On a usual day I collaborate with 10s of people from business owners to managers, architects,
-                            developers & QA, getting together to deliver solutions which
-                            exceed customer expectations. My key responsibilites include collaboration, development,
-                            mentoring and reviewing.</p>
+                        <p>Gave shape to Business Requirements Documents (BRDs), facilitated solution design
+                            and development with team collaboration, while also handling onboarding and mentoring of new
+                            talent, and providing technical guidance as a Subject Matter Expert (SME) across various
+                            project teams. </p>
                     </div>
-                    <div class="flex-shrink-0"><span class="text-primary">July 2018 - Present</span></div>
+                    <div class="flex-shrink-0"><span class="text-primary">July 2018 - June 2022</span></div>
                 </div>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-3">
                     <div class="flex-grow-1">
@@ -113,10 +157,8 @@
                     <div class="flex-grow-1">
                         <h3 class="mb-0">System Engineer Trainee</h3>
                         <div class="subheading mb-1">Infosys Limited</div>
-                        <p>Got selected in the Power Programmers program, an initiative to develop technically competent
-                            group of polyglot developers which can help create high impact deliverables. Received
-                            comprehensive training on software engineering fundamentals and MEAN/
-                            MERN stack.</p>
+                        <p>Selected in the Power Programmers program, an initiative to develop technically competent
+                            group of polyglot developers which can help create high impact deliverables. </p>
                     </div>
                     <div class="flex-shrink-0"><span class="text-primary">December 2016 - April 2017</span></div>
                 </div>
@@ -151,20 +193,14 @@
         <section class="resume-section" id="skills">
             <div class="resume-section-content">
                 <h2 class="mb-5">Skills</h2>
-                <div class="subheading mb-1">Programming Languages & Tools</div>
-                <ul class="list-inline dev-icons">
+                <div class="subheading mb-1 d-block d-lg-none">Programming Languages & Tools</div>
+                <ul class="list-inline dev-icons d-block d-lg-none">
                     <li class="list-inline-item" title="Javascript">Javascript</li>
                     <li class="list-inline-item" title="Typescript">Typescript</li>
                     <li class="list-inline-item" title="HTML">HTML5</li>
                     <li class="list-inline-item" title="CSS">CSS3</li>
                     <li class="list-inline-item" title="Angular">Angular</li>
                     <li class="list-inline-item" title="ReactJS">React JS</li>
-                    <!-- <li class="list-inline-item"><img style="height: 60px; margin-bottom: 5px;"
-                            src="assets/img/chartjs.svg" alt="Highcharts" srcset=""></li> 
-                    <li class="list-inline-item"><img style="height: 72px; margin-bottom: 5px;"
-                            src="assets/img/nodejs.png" alt="NodeJS" srcset=""></li>
-                    <li class="list-inline-item" style="color: lightcoral;" title="SaSS"><i class="fab fa-sass"></i>
-                    </li>-->
                     <li class="list-inline-item" title="Node JS">Node JS</li>
                     <li class="list-inline-item" title="Express">Express</li>
                     <li class="list-inline-item" title="SASS">SASS</li>
@@ -172,26 +208,17 @@
                     <li class="list-inline-item" title="Angular Material">Angular Material</li>
                     <li class="list-inline-item" title="Ag Grid">AgGrid</li>
                     <li class="list-inline-item" title="Highcharts">Highcharts</li>
+                    <li class="list-inline-item" title="Elasticsearch">Elasticsearch</li>
                     <li class="list-inline-item" title="Chart JS">Chart JS</li>
                     <li class="list-inline-item" title="XLSX">XLSX</li>
                     <li class="list-inline-item" title="Mapkit JS">Mapkit JS</li>
-                    <!-- <li class="list-inline-item"><img style="height: 48px; margin-bottom: 15px;"
-                            src="assets/img/cucumberGherkin.png" alt="Cucumber Gherkin" title="Cucumber Gherkin"
-                            srcset=""></li> -->
                     <li class="list-inline-item" title="Cucumber Gherkin">Cucumber Gherkin</li>
-                    <li class="list-inline-item" title="Protractor">Protractor</li>
+                    <li class="list-inline-item" title="Webdriver IO">Webdriver IO</li>
                     <li class="list-inline-item" title="Gulp">Gulp</li>
-                    <!-- <li class="list-inline-item"><img style="height: 36px;" src="assets/img/npm.png" alt="npm"
-                            title="npm" srcset=""></li>
-                    <li class="list-inline-item"><img style="height: 48px; margin-bottom: 15px;"
-                            src="assets/img/java.png" alt="Java" title="Java" srcset=""></li>
-                    <li class="list-inline-item"><img style="height: 36px; margin-bottom: 10px;"
-                            src="assets/img/maven.png" alt="Maven" title="Maven" srcset=""></li> -->
                     <li class="list-inline-item" title="npm">npm</li>
                     <li class="list-inline-item" title="Java">Java</li>
                     <li class="list-inline-item" title="Maven">Maven</li>
                     <li class="list-inline-item" title="Python">
-                        <!-- <img style="height: 45px; margin-bottom: 5px;" src="assets/img/python.png" alt="Python" srcset=""> -->
                         Python
                     </li>
                     <li class="list-inline-item" title="Shell Scripting">Shell Scripting</li>
@@ -201,15 +228,34 @@
                     <li class="list-inline-item" title="Jira">Jira</li>
                     <li class="list-inline-item" title="Kanban">Kanban</li>
                 </ul>
-                <div class="subheading mb-3">Workflow</div>
+                <div class="dev-word-cloud d-none d-lg-block" style="box-shadow: 0 0 4px 0px grey;">
+                    <img src="assets/img/word_cloud.png" alt="" srcset="">
+                </div>
+
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Interests-->
+        <section class="resume-section" id="roles">
+            <div class="resume-section-content">
+                <h2 class="mb-5">Roles & Responsibilities</h2>
+                <!-- <div class="subheading mb-3">Workflow</div> -->
                 <ul class="fa-ul mb-0">
                     <li>
                         <span class="fa-li"><i class="fas fa-check"></i></span>
-                        End User Collaboration on Requirements
+                        Ensure Continuous Engagement amongst Stakeholders, Managers & Developers
                     </li>
                     <li>
                         <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Mobile-First, Responsive Design & Development
+                        BRD Analysis & Low Level Design
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-check"></i></span>
+                        Task Creation & Assignment
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-check"></i></span>
+                        Develop Scalable, Fault Tolerant & Performant Systems
                     </li>
                     <li>
                         <span class="fa-li"><i class="fas fa-check"></i></span>
@@ -225,7 +271,8 @@
                     </li>
                     <li>
                         <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Cross Functional Teams acorss multiple Geographies
+                        Collaboration with Cross-Functional Teams spread across multiple Geographies in a Hybrid Work
+                        Environment
                     </li>
                     <li>
                         <span class="fa-li"><i class="fas fa-check"></i></span>
@@ -242,8 +289,6 @@
                 </ul>
             </div>
         </section>
-        <hr class="m-0" />
-        <!-- Interests-->
         <section class="resume-section" id="interests">
             <div class="resume-section-content">
                 <h2 class="mb-5">Interests</h2>
@@ -262,6 +307,22 @@
             <div class="resume-section-content">
                 <h2 class="mb-5">Awards & Certifications</h2>
                 <ul class="fa-ul mb-0">
+                    <li class="mb-2">
+                        <span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
+                        Google Project Management: Professional Certificate
+                    </li>
+                    <li class="mb-2">
+                        <span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
+                        Meta Database Engineer Professional Certificate
+                    </li>
+                    <li class="mb-2">
+                        <span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
+                        Meta Front-End Developer Professional Certificate
+                    </li>
+                    <li class="mb-2">
+                        <span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
+                        Agile with Atlassian Jira
+                    </li>
                     <li class="mb-2">
                         <span class="fa-li"><i class="fas fa-certificate text-warning"></i></span>
                         Infosys Certified Open Chain Practitioner
@@ -318,6 +379,15 @@
                         <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
                         Runners Up - Infosys ICT Inter-Corporate T20 Cricket Tournament - March 2020
                     </li>
+                    <li class="mb-2">
+                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                        Winners - Limeli8 Corporate League, Cuttack & Bhubaneswar - March 2022
+                    </li>
+                    <li class="mb-2">
+                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                        Runners Up - Platinum Cup, HummingBird Corporate League (3rd Night Edition), Hyderabad -
+                        December 2024
+                    </li>
                 </ul>
             </div>
         </section>
@@ -326,6 +396,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+    <script>
+        incrementAndShowValue();
+    </script>
 </body>
 
 </html>
